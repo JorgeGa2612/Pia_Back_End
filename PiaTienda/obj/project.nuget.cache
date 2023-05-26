@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fZUg3E1FyMq3MOg10A1el9n6pV625d5rM8ZYx33ugbkfmGM5K4bIp4FdE66lXRkkAgR6KM22ATD7udNfQNuWQA==",
+  "dgSpecHash": "9Fg9XbpiTGTviIqWiy2dGuOpsNLsuOA7lzS5KM3mmsjQ9Xo+/puDlwbMN4TAu3nFNnAlz1WQGiXxRpTyCeFVEQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alexi\\Source\\Repos\\Pia_Back_End\\PiaTienda\\PiaTienda.csproj",
+  "projectFilePath": "C:\\Users\\alexi\\source\\repos\\Pia_Back_End\\PiaTienda\\PiaTienda.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexi\\.nuget\\packages\\automapper\\8.1.1\\automapper.8.1.1.nupkg.sha512",
     "C:\\Users\\alexi\\.nuget\\packages\\bouncycastle.cryptography\\2.1.1\\bouncycastle.cryptography.2.1.1.nupkg.sha512",

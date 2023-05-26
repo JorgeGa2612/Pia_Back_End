@@ -1,12 +1,11 @@
-﻿using AutoMapper;
-using MailKit.Security;
-using MailKit;
+﻿using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace PiaTienda.Services
 {
-    public class servicioCorreo : IMailService
+    public class servicioCorreo : Iconfigcorreo
     {
         private readonly Iconfigcorreo _configcorreo;
         public servicioCorreo(IOptions<Iconfigcorreo> configcorreo)

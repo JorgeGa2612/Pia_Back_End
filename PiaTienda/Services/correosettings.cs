@@ -1,6 +1,6 @@
 ﻿namespace PiaTienda.Services
 {
-    public class correosettings
+    public interface correosettings
     {
         public string Mail { get; set; }
         public string DisplayName { get; set; }

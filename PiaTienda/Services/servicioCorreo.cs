@@ -2,28 +2,29 @@
 using Microsoft.Extensions.Options;
 using MimeKit;
 using MailKit.Net.Smtp;
+using MailKit;
 
 namespace PiaTienda.Services
 {
     public class servicioCorreo : Iconfigcorreo
     {
-        private readonly Iconfigcorreo _configcorreo;
-        public servicioCorreo(IOptions<Iconfigcorreo> configcorreo)
+        private readonly correosettings _correosettings;
+        public servicioCorreo(IOptions<correosettings> correosettings)
         {
-            _configcorreo = configcorreo.Value;
+            _correosettings = correosettings.Value;
         }
 
-        public async Task SendEmailAsync(Iconfigcorreo mailRequest)
+        public async Task SendEmailAsync(correorequest correorequest)
         {
             var email = new MimeMessage();
-            email.Sender = MailboxAddress.Parse(_configcorreo.Mail);
-            email.To.Add(MailboxAddress.Parse(mailRequest.ToEmail));
-            email.Subject = mailRequest.Subject;
+            email.Sender = MailboxAddress.Parse(_correosettings.Mail);
+            email.To.Add(MailboxAddress.Parse(correorequest.ToEmail));
+            email.Subject = correorequest.Subject;
             var builder = new BodyBuilder();
-            if (mailRequest.Attachments != null)
+            if (correorequest.Attachments != null)
             {
                 byte[] fileBytes;
-                foreach (var file in mailRequest.Attachments)
+                foreach (var file in correorequest.Attachments)
                 {
                     if (file.Length > 0)
                     {
@@ -36,13 +37,14 @@ namespace PiaTienda.Services
                     }
                 }
             }
-            builder.HtmlBody = mailRequest.Body;
+            builder.HtmlBody = correorequest.Body;
             email.Body = builder.ToMessageBody();
             using var smtp = new SmtpClient();
-            smtp.Connect(_configcorreo.Host, _configcorreo.Port, SecureSocketOptions.StartTls);
-            smtp.Authenticate(_configcorreo.Mail, _configcorreo.Password);
+            smtp.Connect(_correosettings.Host, _correosettings.Port, SecureSocketOptions.StartTls);
+            smtp.Authenticate(_correosettings.Mail, _correosettings.Password);
             await smtp.SendAsync(email);
             smtp.Disconnect(true);
 
         }
+    }
 }

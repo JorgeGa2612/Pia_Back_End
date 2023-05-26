@@ -1,22 +1,22 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.IdentityModel.Tokens.Jwt;
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.IdentityModel.Tokens.Jwt;
 using System.Text.Json.Serialization;
 using System.Text;
+using PiaTienda.Filtros;
+using PiaTienda.Middlewares;
 using PiaTienda.Services;
-using System.Security.Cryptography.Xml;
-using Microsoft.OpenApi.Models;
-using MailKit;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace PiaTienda
 {
     public class StartUp
     {
+
         public StartUp(IConfiguration configuration)
         {
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
@@ -29,13 +29,30 @@ namespace PiaTienda
         {
             services.AddControllers(options =>
             {
-                options.Filters.Add(typeof(JwtSecurityTokenHandler));
+                options.Filters.Add(typeof(FiltroDeExcepcion));
             }).AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
+
             services.AddResponseCaching();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(opciones => opciones.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(Configuration["keyjwt"])),
+                    ClockSkew = TimeSpan.Zero
+                });
+
+
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
             {
@@ -77,9 +94,11 @@ namespace PiaTienda
                 };
             });
 
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(StartUp));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()IdentityBuilder identityBuilder = AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddLogging(loggingBuilder =>
             {
@@ -100,8 +119,8 @@ namespace PiaTienda
                 });
             });
 
-            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
-            services.AddTransient<IMailService, MailService>();
+            services.Configure<correosettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<Iconfigcorreo, servicioCorreo>();
 
         }
 

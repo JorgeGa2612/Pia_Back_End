@@ -1,7 +1,7 @@
 ﻿namespace PiaTienda.Services
 {
-    public class Iconfigcorreo
+    public interface Iconfigcorreo
     {
-        Task SendEmailAsync(Iconfigcorreo mailRequest);
+        Task SendEmailAsync(correorequest mailRequest);
     }
 }

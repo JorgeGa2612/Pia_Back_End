@@ -15,7 +15,6 @@ namespace PiaTienda.Entidades
 
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [EsNumerico]
-
         public int Total { get; set; }
         public Clientes Clientes { get; set; }
 

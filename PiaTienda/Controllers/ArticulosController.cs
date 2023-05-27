@@ -30,6 +30,12 @@ namespace PiaTienda.Controllers
         [HttpPost]
         public async Task<ActionResult> Post(Articulos articulos)
         {
+            var existeArticulo = await _context.Articulos.AnyAsync(x => x.NombreArticulo == articulos.NombreArticulo);
+            if (existeArticulo)
+            {
+                return BadRequest("El articulo ya existe");
+            }
+
             var existe = await _context.Articulos.AnyAsync(x => x.Id == articulos.CategoriasId);
             if (existe)
             {

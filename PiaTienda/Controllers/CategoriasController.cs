@@ -31,6 +31,13 @@ namespace PiaTienda.Controllers
         [HttpPost]
         public async Task<ActionResult> Post(Categorias categorias)
         {
+            //parametro que verifique que no exista la misma categoria
+            var existe = await _context.Categorias.AnyAsync(x => x.NombreCategoria == categorias.NombreCategoria);
+            if (existe)
+            {
+                return BadRequest("La categoria ya existe");
+            }
+            
             _context.Add(categorias);
             await _context.SaveChangesAsync();
             return Ok();

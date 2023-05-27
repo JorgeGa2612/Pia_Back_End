@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PiaTienda.Validaciones;
+using System.ComponentModel.DataAnnotations;
 
 namespace PiaTienda.Entidades
 {
@@ -13,6 +14,8 @@ namespace PiaTienda.Entidades
         public int ClienteId { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es requerido")]
+        [EsNumerico]
+
         public int Total { get; set; }
         public Clientes Clientes { get; set; }
 

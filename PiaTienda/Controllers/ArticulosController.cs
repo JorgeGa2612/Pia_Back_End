@@ -1,11 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PiaTienda.Entidades;
+﻿using PiaTienda.Entidades;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace PiaTienda.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/Articulos")]
     public class ArticulosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -15,7 +15,7 @@ namespace PiaTienda.Controllers
             _context = context;
         }
 
-        [HttpGet("/Listado articulos")]
+        [HttpGet("/ListadoTodosArticulos")]
         public async Task<ActionResult<List<Articulos>>> GetAll()
         {
             return await _context.Articulos.ToListAsync();
@@ -31,7 +31,7 @@ namespace PiaTienda.Controllers
         public async Task<ActionResult> Post(Articulos articulos)
         {
             var existe = await _context.Articulos.AnyAsync(x => x.Id == articulos.CategoriasId);
-            if (!existe)
+            if (existe)
             {
                 return BadRequest("La categoria no existe");
             }

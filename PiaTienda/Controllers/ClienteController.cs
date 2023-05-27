@@ -15,18 +15,12 @@ namespace PiaTienda.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public ActionResult<List<Clientes>> get()
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<Clientes>> GetById(int id)
         {
-            return new List<Clientes>()
-            {
-                new Clientes {Id = 1, Nombre = "Juan", Edad = 20, Fecha = "10/10/2021"},
-                new Clientes {Id = 2, Nombre = "Pedro", Edad = 21, Fecha = "10/10/2021"},
-                new Clientes {Id = 3, Nombre = "Maria", Edad = 22, Fecha = "10/10/2021"},
-                new Clientes {Id = 4, Nombre = "Jose", Edad = 23, Fecha = "10/10/2021"}
-            };
-
+            return await _context.Clientes.Include(x => x.Ventas).FirstOrDefaultAsync(x => x.Id == id);
         }
+
 
         [HttpPost]
         public async Task<ActionResult> Post(Clientes clientes)

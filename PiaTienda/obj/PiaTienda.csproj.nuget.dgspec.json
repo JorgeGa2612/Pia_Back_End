@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jorge\\OneDrive\\Escritorio\\TEST\\Pia_Back_End\\PiaTienda\\PiaTienda.csproj": {}
+    "C:\\Users\\jorge\\OneDrive\\Escritorio\\PIA BACKEND\\Pia_Back_End\\PiaTienda\\PiaTienda.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jorge\\OneDrive\\Escritorio\\TEST\\Pia_Back_End\\PiaTienda\\PiaTienda.csproj": {
+    "C:\\Users\\jorge\\OneDrive\\Escritorio\\PIA BACKEND\\Pia_Back_End\\PiaTienda\\PiaTienda.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jorge\\OneDrive\\Escritorio\\TEST\\Pia_Back_End\\PiaTienda\\PiaTienda.csproj",
+        "projectUniqueName": "C:\\Users\\jorge\\OneDrive\\Escritorio\\PIA BACKEND\\Pia_Back_End\\PiaTienda\\PiaTienda.csproj",
         "projectName": "PiaTienda",
-        "projectPath": "C:\\Users\\jorge\\OneDrive\\Escritorio\\TEST\\Pia_Back_End\\PiaTienda\\PiaTienda.csproj",
+        "projectPath": "C:\\Users\\jorge\\OneDrive\\Escritorio\\PIA BACKEND\\Pia_Back_End\\PiaTienda\\PiaTienda.csproj",
         "packagesPath": "C:\\Users\\jorge\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jorge\\OneDrive\\Escritorio\\TEST\\Pia_Back_End\\PiaTienda\\obj\\",
+        "outputPath": "C:\\Users\\jorge\\OneDrive\\Escritorio\\PIA BACKEND\\Pia_Back_End\\PiaTienda\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jorge\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,7 +42,7 @@
           "dependencies": {
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[8.1.1, )"
+              "version": "[12.0.1, )"
             },
             "MailKit": {
               "target": "Package",
@@ -50,29 +50,33 @@
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[6.0.3, )"
+              "version": "[6.0.16, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.0.16, )"
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.0.16, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.16, )"
             },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
-              "version": "[6.0.1, )"
+              "version": "[6.0.16, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.1, )"
+              "version": "[6.0.16, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.1, )"
+              "version": "[6.0.16, )"
             },
             "MimeKit": {
               "target": "Package",

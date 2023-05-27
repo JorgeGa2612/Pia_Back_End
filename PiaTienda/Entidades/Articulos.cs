@@ -16,11 +16,17 @@ namespace PiaTienda.Entidades
         public string Descripcion { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es requerido")]
+        [EsNumerico]
+
         public int Precio { get; set; }
+
+        [EsNumerico]
 
         public int Cantidad { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es requerido")]
+        [EsNumerico]
+
         public int CategoriasId { get; set; }
         public Categorias Categorias { get; set; }
 

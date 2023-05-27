@@ -31,7 +31,7 @@ namespace PiaTienda.Controllers
         public async Task<ActionResult> Post(Ventas ventas)
         {
             var existe = await _context.Ventas.AnyAsync(x => x.Id == ventas.ClienteId);
-            if (!existe)
+            if (existe)
             {
                 return BadRequest("El cliente no existe");
             }

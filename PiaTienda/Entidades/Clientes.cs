@@ -14,7 +14,7 @@ namespace PiaTienda.Entidades
         [PrimeraLetraMayuscula]
         public string Nombre { get; set; }
 
-
+        [EsNumerico]
         [Range(18, 100, ErrorMessage = "El campo Edad no se encuentra dentro del rango")]
         [NotMapped]
         public int Edad { get; set; }
